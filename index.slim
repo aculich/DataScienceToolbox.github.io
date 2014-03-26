@@ -1,0 +1,374 @@
+---
+layout: default
+title: site.name
+---
+
+.container
+
+  h1 Data Science Toolbox
+
+  .media
+    a.pull-left href="http://datasciencetoolbox.org"
+      img.media-object src="assets/img/data-science-toolbox.png" style="padding-right: 20px" alt="Data Science Toolbox"
+    .media-body
+      .media-heading
+        | Start doing data science in minutes
+
+      /hr style="margin-bottom: 15px"
+
+      p style="text-align: justify"
+        | As a data scientist, you don't want to waste your time installing software. Our goal is to provide a virtual environment that will enable you to <a href="#start">start doing data science</a> in a matter of minutes. 
+
+      /hr style="margin-top: 15px; margin-bottom: 15px"
+
+      p style="text-align: justify"
+        | As a teacher, author, or organization, making sure that your students, readers, or members have the same software installed is not straightforward. This open source project will enable you to easily create <a href="#bundles">custom software and data bundles</a> for the Data Science Toolbox. 
+
+
+  hr
+
+
+  a name="base"
+  h2 A virtual environment for data science
+  markdown: 
+    The Data Science Toolbox is a virtual environment based on Ubuntu Linux that is specifically suited for doing data science. Its purpose is to get you started in a matter of minutes. You can run the Data Science Toolbox either locally (using VirtualBox and Vagrant) or in the cloud (using Amazon Web Services).
+
+    We aim to offer a virtual environment that contains the software that is most commonly used for data science while keeping it as lean as possible. After a fresh install, the Data Science Toolbox contains the following software:
+
+    - Python, with the following packages: IPython Notebook, NumPy, SciPy, matplotlib, pandas, scikit-learn, and SymPy.
+    - R, with the following packages: ggplot2, plyr, dplyr, lubridate, zoo, forecast, and sqldf.
+    - dst, a command-line tool for installing additional bundles on the Data Science Toolbox (see next section).
+
+    [Let us know](https://twitter.com/DataSciToolbox) if you want to see something added to the Data Science Toolbox.
+
+  hr
+
+  a name="bundles"
+  h2 Additional software and data bundles
+  markdown: 
+    The Data Science Toolbox has support for so-called bundles.
+    A bundle is a collection of software or data that is specific to a certain book, course, or project. (In case you're interested, a bundle is essentially an Ansible playbook.) Once you're logged in to your Data Science Toolbox, bundles are installed with the `dst` command-line tool (we are currently developing a user-friendly web interface as well): 
+
+    ```console
+    vagrant@data-science-toolbox:~$ dst add dsatcl
+    ```
+
+    The bundle `dsatcl` belongs to the upcoming book "Data Science at the Command Line". It contains, among other thing, the command-line tools discussed in [this blog post](http://jeroenjanssens.com/2013/09/19/seven-command-line-tools-for-data-science.html). Because the Data Science Toolbox is still very young, this is the only bundle currently available. If you're a teacher, author, or organization, and you're interested in creating a software or data bundle for your class, book, or project, let us know, and we will help you out.
+
+  hr
+
+  a name="start"
+  h2 Getting started with Data Science Toolbox 0.1.5
+  p
+    | There are two ways to run the Data Science Toolbox: (1) locally using VirtualBox and Vagrant and (2) in the cloud using Amazon Web Services. Both ways result in exactly the same environment. Select the appropriate tab below for the corresponding installation steps.
+    
+  ul.nav.nav-tabs
+    li.active: a href="#local" data-toggle="tab": strong Locally 
+    li: a href="#cloud" data-toggle="tab": strong In the cloud
+
+  .tab-content
+
+    .tab-pane.active id="local"
+      markdown:
+
+        Because the local version of the Data Science Toolbox runs on top of VirtualBox and Vagrant, it can be installed on Linux, Mac OS X, and Microsoft Windows. 
+
+        ### Step 1: Download and install VirtualBox
+
+        Go to the [Virtualbox download page](https://www.virtualbox.org/wiki/Downloads) and download the appropriate binary.
+        Open the binary and follow the installations instructions.
+
+        ### Step 2: Download and install Vagrant
+
+        Similarly to Step 1, go the [Vagrant download page](http://www.vagrantup.com/downloads.html) and download the appropriate binary. 
+        Open the binary and follow the installations instructions.
+
+        ### Step 3: Download and start the Data Science Toolbox
+
+        Open a terminal (also known as the command prompt in Microsoft Windows).
+        Create a directory, for example "MyDataScienceToolbox", and navigate to it:
+
+
+        ```console
+        $ mkdir MyDataScienceToolbox
+        $ cd MyDataScienceToolbox
+        ```
+
+        To download and start the Data Science Toolbox run the following commands:
+
+        ```console
+        $ vagrant init data-science-toolbox/dst
+        $ vagrant up
+        ```
+
+        ### Step 4: Log in (on Mac OS X and Linux)
+
+        If you are running Mac OS X or some other UNIX-like operating system, you can log in to the Data Science Toolbox by simply running the following command in a terminal:
+
+        ```console
+        $ vagrant ssh
+        ```
+
+        ### Step 4: Log in (on Microsoft Windows)
+
+        If you are running Microsoft Windows, you need to use a third-party application in order to log in to the Data Science Toolbox. We recommend Putty. Go to its [download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) and download `putty.exe`. Run `putty.exe` and enter the following values:
+
+        Host Name (or IP address): 127.0.0.1 <br \>
+        Port: 2222<br \>
+        Connection type: SSH
+
+        (If you want, you can save these values as a session by clicking the "Save" button, so that you do not need to enter these values again.) Click the "Open" button and enter "vagrant" for both the username and the password.
+
+        ### Step 5: Set up IPython Notebook (optional)
+        
+        If you like to be able to run IPython Notebook on your Data Science Toolbox, invoke the following command to create a password-protected profile:
+
+        ```console
+        vagrant@data-science-toolbox:~$ dst setup base
+        ```
+
+        Step 3 created a file named `Vagrantfile`, which is a configuration file used by Vagrant.
+        Open the file in your favorite text editor and add the following text somewhere around line 22:
+
+        ```ruby
+        config.vm.network "forwarded_port", guest: 8888, host: 8888
+        ```
+
+        This line instructs Vagrant to open up port 8888 so that you can access the IPython Notebook from your browser. You can now restart the Data Science Toolbox and log in again:
+
+        ```bash
+        $ vagrant reload
+        $ vagrant ssh
+        ```
+
+        To start the IPython Notebook server, run:
+
+        ```sh
+        vagrant@data-science-toolbox:~$ sudo ipython notebook --profile=dst
+        ```
+
+        You can now access the IPython Notebook server at `https://localhost:8888`. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Just click on the "Proceed anyway" button.
+
+        <a href="assets/img/ipython-03.png"><img src="assets/img/ipython-03.png" style="width:555px" class="screenshot" /></a>
+
+        Enter the same password as you entered when you created the profile.
+
+        <a href="assets/img/ipython-04.png"><img src="assets/img/ipython-04.png" style="width:555px" class="screenshot" /></a>
+
+        Once you're logged in, you are greeted with the wonderful IPython Notebook.
+
+        <a href="assets/img/ipython-05.png"><img src="assets/img/ipython-05.png" style="width:555px" class="screenshot" /></a>
+
+
+        ### Step 6: Install additional software packages and bundles (optional)
+
+        It's unlikely that the Data Science Toolbox contains *all* the software you need to do data science. Fortunately, you can always use `apt-get` and `pip` to install individual Ubuntu and Python packages, respectively. For example:
+
+        ```console
+        vagrant@data-science-toolbox:~$ sudo apt-get install cowsay
+        vagrant@data-science-toolbox:~$ sudo pip install networkx
+        ```
+
+        Moreover, R packages can be installed from within R:
+
+        ```console
+        vagrant@data-science-toolbox:~$ R
+        > install.packages('stringr')
+        ```
+
+        In the near future, we hope to have more software and data bundles. The bundle `dsatcl`, which belongs to the upcoming book "Data Science at the Command Line", is installed as follows:
+
+        ```console
+        vagrant@data-science-toolbox:~$ dst add dsatcl
+        ```
+
+        ### Step 7: Start doing data science
+
+        Congratulations, you now have your own Data Science Toolbox. Enjoy! [Let us know](https://twitter.com/DataSciToolbox) if you have any questions, comments, or feedback.
+
+
+
+
+
+
+
+    .tab-pane id="cloud"
+      markdown:
+
+        Amazon offers a [free usage tier](http://aws.amazon.com/free/),  which allows you to run the Data Science Toolbox in the cloud for 750 hours for free. 
+
+        ### Step 1: Select region and open AWS launch wizard
+
+        Find the region below that is closest to you. Click the "Launch" button to open the AWS launch wizard in a new window.
+
+      .panel.panel-default
+        table.table.table-striped
+          tr
+            th Region Name
+            th Region Code
+            th AMI
+            th Launch
+          | {% for ami in site.data.amis%}
+          tr
+            td {{ ami.region_name }}
+            td {{ ami.region_code }}
+            td {{ ami.ami_id }}
+            td
+              a.btn.btn-default.btn-xs href="https://console.aws.amazon.com/ec2/home?region={{ ami.region_code }}#launchAmi={{ ami.ami_id }}" role="button" target="_blank"
+                span.glyphicon.glyphicon-cloud-upload 
+                |  Launch
+          | {% endfor %}
+
+      markdown:
+        ### Step 2: Configure EC2 instance
+
+        In order to launch an EC2 instance, you need to be logged in to AWS. If you do not yet have an AWS account, select "I am a new user" and click the "Sign in" button.
+
+        <a href="assets/img/aws-01.png"><img src="assets/img/aws-01.png" style="width:555px" class="screenshot" /></a>
+
+        Once you're logged in to AWS, you can select the type of EC2 instance you want to run. Only the `t1.micro` type is eligible for the free usage tier. 
+
+        <a href="assets/img/aws-03.png"><img src="assets/img/aws-03.png" style="width:555px" class="screenshot" /></a>
+
+        Choose your preferred instance type and press the "Next" button. You may safely ignore the settings on the next two screen. 
+
+        <a href="assets/img/aws-04.png"><img src="assets/img/aws-04.png" style="width:555px" class="screenshot" /></a>
+        <a href="assets/img/aws-05.png"><img src="assets/img/aws-05.png" style="width:555px" class="screenshot" /></a>
+
+        Giving your instance a name is useful for when you are running multiple instances, but it is not required.
+
+        <a href="assets/img/aws-06.png"><img src="assets/img/aws-06.png" style="width:555px" class="screenshot" /></a>
+
+        The settings on the next screen ("Configure Security Group") determine through which ports you can access your Data Science Toolbox. Port 22 is open by default, which allows you log in. If you would like to be able to use IPython notebook, you need to click the "Add rule" button and add a "custom TCP rule" for port "8888" and source "Anywhere". The result should look like the screenshot below. These settings cannot be changed once the EC2 instance is running.
+
+        <a href="assets/img/aws-07.png"><img src="assets/img/aws-07.png" style="width:555px" class="screenshot" /></a>
+
+        You can now review your settings and click the "Launch" button. Both the "dst" version and "ami" id shown in the top may be different.
+
+        <a href="assets/img/aws-08.png"><img src="assets/img/aws-08.png" style="width:555px" class="screenshot" /></a>
+
+        ### Step 3: Create key pair
+        
+        In order to log in to the EC2 instance, you need to have an AWS key pair. A screen will pop up where you can either use an existing key pair (if you already have one), or create a new one. 
+
+        <a href="assets/img/aws-09.png"><img src="assets/img/aws-09.png" style="width:555px" class="screenshot" /></a>
+
+        Give the key pair a name and press the "Download Key Pair" button. Remember the location where you save the file. If everything went well, you will see something like the following screen. Press the "View Instances" button.
+
+        <a href="assets/img/aws-10.png"><img src="assets/img/aws-10.png" style="width:555px" class="screenshot" /></a>
+
+        You now see an overview of all your EC2 instances.  It will take a few moments before your Data Science Toolbox is assigned a public DNS. 
+
+        <a href="assets/img/aws-11.png"><img src="assets/img/aws-11.png" style="width:555px" class="screenshot" /></a>
+
+        ### Step 4: Log in (on Mac OS X and Linux)
+
+        If you are running Mac OS X or some other UNIX-like operating system, you can log in to the Data Science Toolbox from the terminal. First, you need to make sure that the permissions on your key pair file you downloaded earlier are not too open:
+
+        ```console
+        $ chmod 400 MyKeyPair.pem
+        ```
+
+        You can now log in using the following command:
+
+        ```console
+        $ ssh -i MyKeyPair.pem ubuntu@ec2-54-85-70-149.compute-1.amazonaws.com
+        ```
+
+        The username is always "ubuntu". The hostname (the part after the "@") should be the public DNS of the EC2 instance. You can copy this from the Instances overview shown in the previous screenshot.
+
+        ### Step 4: Log in (on Microsoft Windows)
+
+        Please follow [these instructions](http://docs.aws.amazon.com/gettingstarted/latest/wah-linux/getting-started-deploy-app-connect.html) if you're running Microsoft Windows.
+
+        ### Step 5: Set up IPython Notebook (optional)
+        
+        If you like to be able to run IPython Notebook on your Data Science Toolbox, invoke the following command to create a password-protected profile:
+
+        ```console
+        ubuntu@ip-172-31-26-198:~$ dst setup base
+        ```
+
+        To start the IPython Notebook server, run:
+
+        ```console
+        ubuntu@ip-172-31-26-198:~$ sudo ipython notebook --profile=dst
+        ```
+
+        You can now access the IPython Notebook server at `https://<public dns>:8888`. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Just click on the "Proceed anyway" button.
+
+        <a href="assets/img/ipython-01.png"><img src="assets/img/ipython-01.png" style="width:555px" class="screenshot" /></a>
+
+        Enter the same password as you entered when you created the profile.
+
+        <a href="assets/img/ipython-02.png"><img src="assets/img/ipython-02.png" style="width:555px" class="screenshot" /></a>
+
+        Once you're logged in, you are greeted with the wonderful IPython Notebook.
+
+        ### Step 6: Install additional software packages and bundles (optional)
+
+        It's unlikely that the Data Science Toolbox contains *all* the software you need to do data science. Fortunately, you can always use `apt-get` and `pip` to install individual Ubuntu and Python packages, respectively. For example:
+
+        ```console
+        ubuntu@ip-172-31-26-198:~$ sudo apt-get install cowsay
+        ubuntu@ip-172-31-26-198:~$ sudo pip install networkx
+        ```
+
+        Moreover, R packages can be installed from within R:
+
+        ```console
+        ubuntu@ip-172-31-26-198:~$ R
+        > install.packages('stringr')
+        ```
+
+        In the near future, we hope to have more software and data bundles. The bundle `dsatcl`, which belongs to the upcoming book "Data Science at the Command Line", is installed as follows:
+
+        ```console
+        ubuntu@ip-172-31-26-198:~$ dst add dsatcl
+        ```
+
+        ### Step 7: Start doing data science
+
+        Congratulations, you now have your own Data Science Toolbox. Enjoy! [Let us know](https://twitter.com/DataSciToolbox) if you have any questions, comments, or feedback.
+
+
+
+
+
+
+
+
+  hr
+
+  a name="giants"
+  h2 Standing on the shoulders of giants
+
+  p
+    | The Data Science Toolbox would not have been possible without these wonderful platforms and software.
+
+  .panel.panel-default.giants
+    | {% for logo in site.data.logos%}
+    a href="{{ logo.url }}"
+      img src="assets/img/logo-{{ logo.name }}.png"
+    | {% endfor %}
+
+
+
+  footer
+    .container
+      .social
+        ul.social-buttons
+          li: iframe src="http://ghbtns.com/github-btn.html?user=DataScienceToolbox&repo=data-science-toolbox&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"
+          li: iframe src="http://ghbtns.com/github-btn.html?user=DataScienceToolbox&repo=data-science-toolbox&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="85" height="20"
+          li
+            | <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://datasciencetoolbox.org" data-text="Data Science Toolbox - Start doing data science in minutes" data-via="DataSciToolbox">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          li 
+            | <a href="https://twitter.com/DataSciToolbox" class="twitter-follow-button" data-show-count="false">Follow @DataSciToolbox</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+      div
+        | Developed by <a href="http://jeroenjanssens.com">Jeroen Janssens</a> and others.
+      div
+        | Code licensed under <a href="https://raw.githubusercontent.com/DataScienceToolbox/data-science-toolbox/master/LICENSE">BSD</a> and available on <a href="https://github.com/DataScienceToolbox/data-science-toolbox">GitHub</a>.
+
+

@@ -1,0 +1,9 @@
+- {ami_id: ami-c2e4b590, region_code: ap-southeast-1, region_name: Asia Pacific (Singapore)}
+- {ami_id: ami-bf62fb85, region_code: ap-southeast-2, region_name: Asia Pacific (Sydney)}
+- {ami_id: ami-37e39336, region_code: ap-northeast-1, region_name: Asia Pacific (Tokyo)}
+- {ami_id: ami-6314e814, region_code: eu-west-1, region_name: EU (Ireland)}
+- {ami_id: ami-db02a1c6, region_code: sa-east-1, region_name: South America (Sao Paulo)}
+- {ami_id: ami-d1737bb8, region_code: us-east-1, region_name: US East (Northern Virginia)}
+- {ami_id: ami-46af9003, region_code: us-west-1, region_name: US West (Northern California)}
+- {ami_id: ami-8aa1cfba, region_code: us-west-2, region_name: US West (Oregon)}
+

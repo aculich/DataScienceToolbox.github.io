@@ -1,0 +1,14 @@
+- name: ubuntu
+  url: http://www.ubuntu.com/
+- name: aws
+  url: http://aws.amazon.com/
+- name: github
+  url: http://github.com/
+- name: packer
+  url: http://www.packer.io/
+- name: ansible
+  url: http://www.ansible.com/
+- name: vagrant
+  url: http://www.vagrantup.com/
+- name: virtualbox
+  url: http://www.virtualbox.org/
