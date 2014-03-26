@@ -1,1 +1,417 @@
-test
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>Data Science Toolbox</title><meta content="width=device-width" name="viewport" /><link href="/favicon.png" rel="icon" type="image/png" /><link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" /><link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" rel="stylesheet" /><link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed|Lora:400,400italic,700|Ubuntu+Mono:400,700" rel="stylesheet" /><link href="assets/css/main.css" rel="stylesheet" /></head><body><div class="container">
+  <h1>
+    Data Science Toolbox
+  </h1>
+  <div class="media">
+    <a class="pull-left" href="http://datasciencetoolbox.org"><img class="media-object" src="assets/img/data-science-toolbox.png" style="padding-right: 20px" alt="Data Science Toolbox" /></a>
+    <div class="media-body">
+      <div class="media-heading">
+        Start doing data science in minutes
+      </div>
+      <p style="text-align: justify">
+        As a data scientist, you don't want to waste your time installing software. Our goal is to provide a virtual environment that will enable you to <a href="#start">start doing data science</a> in a matter of minutes. 
+      </p>
+      <p style="text-align: justify">
+        As a teacher, author, or organization, making sure that your students, readers, or members have the same software installed is not straightforward. This open source project will enable you to easily create <a href="#bundles">custom software and data bundles</a> for the Data Science Toolbox. 
+      </p>
+    </div>
+  </div>
+  <hr />
+  <a name="base"></a>
+  <h2>
+    A virtual environment for data science
+  </h2>
+  <p>The Data Science Toolbox is a virtual environment based on Ubuntu Linux that is specifically suited for doing data science. Its purpose is to get you started in a matter of minutes. You can run the Data Science Toolbox either locally (using VirtualBox and Vagrant) or in the cloud (using Amazon Web Services).</p>
+  
+  <p>We aim to offer a virtual environment that contains the software that is most commonly used for data science while keeping it as lean as possible. After a fresh install, the Data Science Toolbox contains the following software:</p>
+  
+  <ul>
+  <li>Python, with the following packages: IPython Notebook, NumPy, SciPy, matplotlib, pandas, scikit-learn, and SymPy.</li>
+  <li>R, with the following packages: ggplot2, plyr, dplyr, lubridate, zoo, forecast, and sqldf.</li>
+  <li>dst, a command-line tool for installing additional bundles on the Data Science Toolbox (see next section).</li>
+  </ul>
+  
+  <p><a href="https://twitter.com/DataSciToolbox">Let us know</a> if you want to see something added to the Data Science Toolbox.</p>
+  
+  <hr />
+  <a name="bundles"></a>
+  <h2>
+    Additional software and data bundles
+  </h2><p>The Data Science Toolbox has support for so-called bundles.
+A bundle is a collection of software or data that is specific to a certain book, course, or project. (In case you&#39;re interested, a bundle is essentially an Ansible playbook.) Once you&#39;re logged in to your Data Science Toolbox, bundles are installed with the <code>dst</code> command-line tool (we are currently developing a user-friendly web interface as well): </p>
+<div class="highlight"><pre><span class="gp">vagrant@data-science-toolbox:~$</span> dst add dsatcl
+</pre></div>
+<p>The bundle <code>dsatcl</code> belongs to the upcoming book &quot;Data Science at the Command Line&quot;. It contains, among other thing, the command-line tools discussed in <a href="http://jeroenjanssens.com/2013/09/19/seven-command-line-tools-for-data-science.html">this blog post</a>. Because the Data Science Toolbox is still very young, this is the only bundle currently available. If you&#39;re a teacher, author, or organization, and you&#39;re interested in creating a software or data bundle for your class, book, or project, let us know, and we will help you out.</p>
+
+  <hr />
+  <a name="start"></a>
+  <h2>
+    Getting started with Data Science Toolbox 0.1.5
+  </h2>
+  <p>
+    There are two ways to run the Data Science Toolbox: (1) locally using VirtualBox and Vagrant and (2) in the cloud using Amazon Web Services. Both ways result in exactly the same environment. Select the appropriate tab below for the corresponding installation steps.
+  </p>
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#local" data-toggle="tab"><strong>Locally </strong></a>
+    </li>
+    <li>
+      <a href="#cloud" data-toggle="tab"><strong>In the cloud</strong></a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="local"><p>Because the local version of the Data Science Toolbox runs on top of VirtualBox and Vagrant, it can be installed on Linux, Mac OS X, and Microsoft Windows. </p>
+
+<h3>Step 1: Download and install VirtualBox</h3>
+
+<p>Go to the <a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox download page</a> and download the appropriate binary.
+Open the binary and follow the installations instructions.</p>
+
+<h3>Step 2: Download and install Vagrant</h3>
+
+<p>Similarly to Step 1, go the <a href="http://www.vagrantup.com/downloads.html">Vagrant download page</a> and download the appropriate binary. 
+Open the binary and follow the installations instructions.</p>
+
+<h3>Step 3: Download and start the Data Science Toolbox</h3>
+
+<p>Open a terminal (also known as the command prompt in Microsoft Windows).
+Create a directory, for example &quot;MyDataScienceToolbox&quot;, and navigate to it:</p>
+<div class="highlight"><pre><span class="gp">$</span> mkdir MyDataScienceToolbox
+<span class="gp">$</span> <span class="nb">cd </span>MyDataScienceToolbox
+</pre></div>
+<p>To download and start the Data Science Toolbox run the following commands:</p>
+<div class="highlight"><pre><span class="gp">$</span> vagrant init data-science-toolbox/dst
+<span class="gp">$</span> vagrant up
+</pre></div>
+<h3>Step 4: Log in (on Mac OS X and Linux)</h3>
+
+<p>If you are running Mac OS X or some other UNIX-like operating system, you can log in to the Data Science Toolbox by simply running the following command in a terminal:</p>
+<div class="highlight"><pre><span class="gp">$</span> vagrant ssh
+</pre></div>
+<h3>Step 4: Log in (on Microsoft Windows)</h3>
+
+<p>If you are running Microsoft Windows, you need to use a third-party application in order to log in to the Data Science Toolbox. We recommend Putty. Go to its <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">download page</a> and download <code>putty.exe</code>. Run <code>putty.exe</code> and enter the following values:</p>
+
+<p>Host Name (or IP address): 127.0.0.1 <br \>
+Port: 2222<br \>
+Connection type: SSH</p>
+
+<p>(If you want, you can save these values as a session by clicking the &quot;Save&quot; button, so that you do not need to enter these values again.) Click the &quot;Open&quot; button and enter &quot;vagrant&quot; for both the username and the password.</p>
+
+<h3>Step 5: Set up IPython Notebook (optional)</h3>
+
+<p>If you like to be able to run IPython Notebook on your Data Science Toolbox, invoke the following command to create a password-protected profile:</p>
+<div class="highlight"><pre><span class="gp">vagrant@data-science-toolbox:~$</span> dst setup base
+</pre></div>
+<p>Step 3 created a file named <code>Vagrantfile</code>, which is a configuration file used by Vagrant.
+Open the file in your favorite text editor and add the following text somewhere around line 22:</p>
+<div class="highlight"><pre><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span> <span class="s2">&quot;forwarded_port&quot;</span><span class="p">,</span> <span class="ss">guest</span><span class="p">:</span> <span class="mi">8888</span><span class="p">,</span> <span class="ss">host</span><span class="p">:</span> <span class="mi">8888</span>
+</pre></div>
+<p>This line instructs Vagrant to open up port 8888 so that you can access the IPython Notebook from your browser. You can now restart the Data Science Toolbox and log in again:</p>
+<div class="highlight"><pre><span class="nv">$ </span>vagrant reload
+<span class="nv">$ </span>vagrant ssh
+</pre></div>
+<p>To start the IPython Notebook server, run:</p>
+<div class="highlight"><pre>vagrant@data-science-toolbox:~<span class="nv">$ </span>sudo ipython notebook --profile<span class="o">=</span>dst
+</pre></div>
+<p>You can now access the IPython Notebook server at <code>https://localhost:8888</code>. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Just click on the &quot;Proceed anyway&quot; button.</p>
+
+<p><a href="assets/img/ipython-03.png"><img src="assets/img/ipython-03.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>Enter the same password as you entered when you created the profile.</p>
+
+<p><a href="assets/img/ipython-04.png"><img src="assets/img/ipython-04.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>Once you&#39;re logged in, you are greeted with the wonderful IPython Notebook.</p>
+
+<p><a href="assets/img/ipython-05.png"><img src="assets/img/ipython-05.png" style="width:555px" class="screenshot" /></a></p>
+
+<h3>Step 6: Install additional software packages and bundles (optional)</h3>
+
+<p>It&#39;s unlikely that the Data Science Toolbox contains <em>all</em> the software you need to do data science. Fortunately, you can always use <code>apt-get</code> and <code>pip</code> to install individual Ubuntu and Python packages, respectively. For example:</p>
+<div class="highlight"><pre><span class="gp">vagrant@data-science-toolbox:~$</span> sudo apt-get install cowsay
+<span class="gp">vagrant@data-science-toolbox:~$</span> sudo pip install networkx
+</pre></div>
+<p>Moreover, R packages can be installed from within R:</p>
+<div class="highlight"><pre><span class="gp">vagrant@data-science-toolbox:~$</span> R
+<span class="gp">&gt;</span> install.packages<span class="o">(</span><span class="s1">&#39;stringr&#39;</span><span class="o">)</span>
+</pre></div>
+<p>In the near future, we hope to have more software and data bundles. The bundle <code>dsatcl</code>, which belongs to the upcoming book &quot;Data Science at the Command Line&quot;, is installed as follows:</p>
+<div class="highlight"><pre><span class="gp">vagrant@data-science-toolbox:~$</span> dst add dsatcl
+</pre></div>
+<h3>Step 7: Start doing data science</h3>
+
+<p>Congratulations, you now have your own Data Science Toolbox. Enjoy! <a href="https://twitter.com/DataSciToolbox">Let us know</a> if you have any questions, comments, or feedback.</p>
+
+    </div>
+    <div class="tab-pane" id="cloud">
+      <p>Amazon offers a <a href="http://aws.amazon.com/free/">free usage tier</a>,  which allows you to run the Data Science Toolbox in the cloud for 750 hours for free. </p>
+      
+      <h3>Step 1: Select region and open AWS launch wizard</h3>
+      
+      <p>Find the region below that is closest to you. Click the &quot;Launch&quot; button to open the AWS launch wizard in a new window.</p>
+      
+      <div class="panel panel-default">
+        <table class="table table-striped">
+          <tr>
+            <th>
+              Region Name
+            </th>
+            <th>
+              Region Code
+            </th>
+            <th>
+              AMI
+            </th>
+            <th>
+              Launch
+            </th>
+          </tr>
+          <tr>
+            <td>
+              Asia Pacific (Singapore)
+            </td>
+            <td>
+              ap-southeast-1
+            </td>
+            <td>
+              ami-c2e4b590
+            </td>
+            <td>
+              <a class="btn btn-default btn-xs" href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-1#launchAmi=ami-c2e4b590" role="button" target="_blank"><span class="glyphicon glyphicon-cloud-upload"></span> Launch</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Asia Pacific (Sydney)
+            </td>
+            <td>
+              ap-southeast-2
+            </td>
+            <td>
+              ami-bf62fb85
+            </td>
+            <td>
+              <a class="btn btn-default btn-xs" href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-2#launchAmi=ami-bf62fb85" role="button" target="_blank"><span class="glyphicon glyphicon-cloud-upload"></span> Launch</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Asia Pacific (Tokyo)
+            </td>
+            <td>
+              ap-northeast-1
+            </td>
+            <td>
+              ami-37e39336
+            </td>
+            <td>
+              <a class="btn btn-default btn-xs" href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-1#launchAmi=ami-37e39336" role="button" target="_blank"><span class="glyphicon glyphicon-cloud-upload"></span> Launch</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              EU (Ireland)
+            </td>
+            <td>
+              eu-west-1
+            </td>
+            <td>
+              ami-6314e814
+            </td>
+            <td>
+              <a class="btn btn-default btn-xs" href="https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-6314e814" role="button" target="_blank"><span class="glyphicon glyphicon-cloud-upload"></span> Launch</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              South America (Sao Paulo)
+            </td>
+            <td>
+              sa-east-1
+            </td>
+            <td>
+              ami-db02a1c6
+            </td>
+            <td>
+              <a class="btn btn-default btn-xs" href="https://console.aws.amazon.com/ec2/home?region=sa-east-1#launchAmi=ami-db02a1c6" role="button" target="_blank"><span class="glyphicon glyphicon-cloud-upload"></span> Launch</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              US East (Northern Virginia)
+            </td>
+            <td>
+              us-east-1
+            </td>
+            <td>
+              ami-d1737bb8
+            </td>
+            <td>
+              <a class="btn btn-default btn-xs" href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-d1737bb8" role="button" target="_blank"><span class="glyphicon glyphicon-cloud-upload"></span> Launch</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              US West (Northern California)
+            </td>
+            <td>
+              us-west-1
+            </td>
+            <td>
+              ami-46af9003
+            </td>
+            <td>
+              <a class="btn btn-default btn-xs" href="https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-46af9003" role="button" target="_blank"><span class="glyphicon glyphicon-cloud-upload"></span> Launch</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              US West (Oregon)
+            </td>
+            <td>
+              us-west-2
+            </td>
+            <td>
+              ami-8aa1cfba
+            </td>
+            <td>
+              <a class="btn btn-default btn-xs" href="https://console.aws.amazon.com/ec2/home?region=us-west-2#launchAmi=ami-8aa1cfba" role="button" target="_blank"><span class="glyphicon glyphicon-cloud-upload"></span> Launch</a>
+            </td>
+          </tr>
+        </table>
+      </div><h3>Step 2: Configure EC2 instance</h3>
+
+<p>In order to launch an EC2 instance, you need to be logged in to AWS. If you do not yet have an AWS account, select &quot;I am a new user&quot; and click the &quot;Sign in&quot; button.</p>
+
+<p><a href="assets/img/aws-01.png"><img src="assets/img/aws-01.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>Once you&#39;re logged in to AWS, you can select the type of EC2 instance you want to run. Only the <code>t1.micro</code> type is eligible for the free usage tier. </p>
+
+<p><a href="assets/img/aws-03.png"><img src="assets/img/aws-03.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>Choose your preferred instance type and press the &quot;Next&quot; button. You may safely ignore the settings on the next two screen. </p>
+
+<p><a href="assets/img/aws-04.png"><img src="assets/img/aws-04.png" style="width:555px" class="screenshot" /></a>
+<a href="assets/img/aws-05.png"><img src="assets/img/aws-05.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>Giving your instance a name is useful for when you are running multiple instances, but it is not required.</p>
+
+<p><a href="assets/img/aws-06.png"><img src="assets/img/aws-06.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>The settings on the next screen (&quot;Configure Security Group&quot;) determine through which ports you can access your Data Science Toolbox. Port 22 is open by default, which allows you log in. If you would like to be able to use IPython notebook, you need to click the &quot;Add rule&quot; button and add a &quot;custom TCP rule&quot; for port &quot;8888&quot; and source &quot;Anywhere&quot;. The result should look like the screenshot below. These settings cannot be changed once the EC2 instance is running.</p>
+
+<p><a href="assets/img/aws-07.png"><img src="assets/img/aws-07.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>You can now review your settings and click the &quot;Launch&quot; button. Both the &quot;dst&quot; version and &quot;ami&quot; id shown in the top may be different.</p>
+
+<p><a href="assets/img/aws-08.png"><img src="assets/img/aws-08.png" style="width:555px" class="screenshot" /></a></p>
+
+<h3>Step 3: Create key pair</h3>
+
+<p>In order to log in to the EC2 instance, you need to have an AWS key pair. A screen will pop up where you can either use an existing key pair (if you already have one), or create a new one. </p>
+
+<p><a href="assets/img/aws-09.png"><img src="assets/img/aws-09.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>Give the key pair a name and press the &quot;Download Key Pair&quot; button. Remember the location where you save the file. If everything went well, you will see something like the following screen. Press the &quot;View Instances&quot; button.</p>
+
+<p><a href="assets/img/aws-10.png"><img src="assets/img/aws-10.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>You now see an overview of all your EC2 instances.  It will take a few moments before your Data Science Toolbox is assigned a public DNS. </p>
+
+<p><a href="assets/img/aws-11.png"><img src="assets/img/aws-11.png" style="width:555px" class="screenshot" /></a></p>
+
+<h3>Step 4: Log in (on Mac OS X and Linux)</h3>
+
+<p>If you are running Mac OS X or some other UNIX-like operating system, you can log in to the Data Science Toolbox from the terminal. First, you need to make sure that the permissions on your key pair file you downloaded earlier are not too open:</p>
+<div class="highlight"><pre><span class="gp">$</span> chmod 400 MyKeyPair.pem
+</pre></div>
+<p>You can now log in using the following command:</p>
+<div class="highlight"><pre><span class="gp">$</span> ssh -i MyKeyPair.pem ubuntu@ec2-54-85-70-149.compute-1.amazonaws.com
+</pre></div>
+<p>The username is always &quot;ubuntu&quot;. The hostname (the part after the &quot;@&quot;) should be the public DNS of the EC2 instance. You can copy this from the Instances overview shown in the previous screenshot.</p>
+
+<h3>Step 4: Log in (on Microsoft Windows)</h3>
+
+<p>Please follow <a href="http://docs.aws.amazon.com/gettingstarted/latest/wah-linux/getting-started-deploy-app-connect.html">these instructions</a> if you&#39;re running Microsoft Windows.</p>
+
+<h3>Step 5: Set up IPython Notebook (optional)</h3>
+
+<p>If you like to be able to run IPython Notebook on your Data Science Toolbox, invoke the following command to create a password-protected profile:</p>
+<div class="highlight"><pre><span class="gp">ubuntu@ip-172-31-26-198:~$</span> dst setup base
+</pre></div>
+<p>To start the IPython Notebook server, run:</p>
+<div class="highlight"><pre><span class="gp">ubuntu@ip-172-31-26-198:~$</span> sudo ipython notebook --profile<span class="o">=</span>dst
+</pre></div>
+<p>You can now access the IPython Notebook server at <code>https://&lt;public dns&gt;:8888</code>. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Just click on the &quot;Proceed anyway&quot; button.</p>
+
+<p><a href="assets/img/ipython-01.png"><img src="assets/img/ipython-01.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>Enter the same password as you entered when you created the profile.</p>
+
+<p><a href="assets/img/ipython-02.png"><img src="assets/img/ipython-02.png" style="width:555px" class="screenshot" /></a></p>
+
+<p>Once you&#39;re logged in, you are greeted with the wonderful IPython Notebook.</p>
+
+<h3>Step 6: Install additional software packages and bundles (optional)</h3>
+
+<p>It&#39;s unlikely that the Data Science Toolbox contains <em>all</em> the software you need to do data science. Fortunately, you can always use <code>apt-get</code> and <code>pip</code> to install individual Ubuntu and Python packages, respectively. For example:</p>
+<div class="highlight"><pre><span class="gp">ubuntu@ip-172-31-26-198:~$</span> sudo apt-get install cowsay
+<span class="gp">ubuntu@ip-172-31-26-198:~$</span> sudo pip install networkx
+</pre></div>
+<p>Moreover, R packages can be installed from within R:</p>
+<div class="highlight"><pre><span class="gp">ubuntu@ip-172-31-26-198:~$</span> R
+<span class="gp">&gt;</span> install.packages<span class="o">(</span><span class="s1">&#39;stringr&#39;</span><span class="o">)</span>
+</pre></div>
+<p>In the near future, we hope to have more software and data bundles. The bundle <code>dsatcl</code>, which belongs to the upcoming book &quot;Data Science at the Command Line&quot;, is installed as follows:</p>
+<div class="highlight"><pre><span class="gp">ubuntu@ip-172-31-26-198:~$</span> dst add dsatcl
+</pre></div>
+<h3>Step 7: Start doing data science</h3>
+
+<p>Congratulations, you now have your own Data Science Toolbox. Enjoy! <a href="https://twitter.com/DataSciToolbox">Let us know</a> if you have any questions, comments, or feedback.</p>
+
+    </div>
+  </div>
+  <hr />
+  <a name="giants"></a>
+  <h2>
+    Standing on the shoulders of giants
+  </h2>
+  <p>
+    The Data Science Toolbox would not have been possible without these wonderful platforms and software.
+  </p>
+  <div class="panel panel-default giants">
+    <a href="http://www.ubuntu.com/"><img src="assets/img/logo-ubuntu.png" /></a><a href="http://aws.amazon.com/"><img src="assets/img/logo-aws.png" /></a><a href="http://github.com/"><img src="assets/img/logo-github.png" /></a><a href="http://www.packer.io/"><img src="assets/img/logo-packer.png" /></a><a href="http://www.ansible.com/"><img src="assets/img/logo-ansible.png" /></a><a href="http://www.vagrantup.com/"><img src="assets/img/logo-vagrant.png" /></a><a href="http://www.virtualbox.org/"><img src="assets/img/logo-virtualbox.png" /></a>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="social">
+        <ul class="social-buttons">
+          <li>
+            <iframe src="http://ghbtns.com/github-btn.html?user=DataScienceToolbox&amp;repo=data-science-toolbox&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+          </li>
+          <li>
+            <iframe src="http://ghbtns.com/github-btn.html?user=DataScienceToolbox&amp;repo=data-science-toolbox&amp;type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="85" height="20"></iframe>
+          </li>
+          <li>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://datasciencetoolbox.org" data-text="Data Science Toolbox - Start doing data science in minutes" data-via="DataSciToolbox">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </li>
+          <li>
+            <a href="https://twitter.com/DataSciToolbox" class="twitter-follow-button" data-show-count="false">Follow @DataSciToolbox</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </li>
+        </ul>
+      </div>
+      <div>
+        Developed by <a href="http://jeroenjanssens.com">Jeroen Janssens</a> and others.
+      </div>
+      <div>
+        Code licensed under <a href="https://raw.githubusercontent.com/DataScienceToolbox/data-science-toolbox/master/LICENSE">BSD</a> and available on <a href="https://github.com/DataScienceToolbox/data-science-toolbox">GitHub</a>.
+      </div>
+    </div>
+  </footer>
+</div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-43246574-2', 'datasciencetoolbox.org');
+ga('send', 'pageview');</script></body></html>
