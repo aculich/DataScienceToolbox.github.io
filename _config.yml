@@ -1,3 +1,4 @@
 name: Data Science Toolbox
 markdown: redcarpet
 pygments: true
+destination: .
