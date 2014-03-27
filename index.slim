@@ -47,13 +47,13 @@ title: site.name
   h2 Additional software and data bundles
   markdown: 
     The Data Science Toolbox has support for so-called bundles.
-    A bundle is a collection of software or data that is specific to a certain book, course, or project. (In case you're interested, a bundle is essentially an Ansible playbook.) Once you're logged in to your Data Science Toolbox, bundles are installed with the `dst` command-line tool (we are currently developing a user-friendly web interface as well): 
+    A bundle is a collection of software or data that is specific to a certain book, course, or project. (In case you're interested, a bundle is essentially an Ansible playbook.) Once you're logged in to your Data Science Toolbox, you can install bundles with the `dst` command-line tool (we are currently developing a user-friendly web interface as well): 
 
     ```console
     vagrant@data-science-toolbox:~$ dst add dsatcl
     ```
 
-    The bundle `dsatcl` belongs to the upcoming book "Data Science at the Command Line". It contains, among other thing, the command-line tools discussed in [this blog post](http://jeroenjanssens.com/2013/09/19/seven-command-line-tools-for-data-science.html). Because the Data Science Toolbox is still very young, this is the only bundle currently available. If you're a teacher, author, or organization, and you're interested in creating a software or data bundle for your class, book, or project, let us know, and we will help you out.
+    The bundle `dsatcl` belongs to the upcoming book "Data Science at the Command Line" by Jeroen Janssens. It contains, among other things, the command-line tools discussed in [this blog post](http://jeroenjanssens.com/2013/09/19/seven-command-line-tools-for-data-science.html). Because the Data Science Toolbox is still very young, this is the only bundle currently available. If you're a teacher, author, or organization, and you're interested in creating a software or data bundle for your class, book, or project, let us know, and we will help you out.
 
   hr
 
@@ -75,18 +75,15 @@ title: site.name
 
         ### Step 1: Download and install VirtualBox
 
-        Go to the [Virtualbox download page](https://www.virtualbox.org/wiki/Downloads) and download the appropriate binary.
-        Open the binary and follow the installations instructions.
+        Go to the [Virtualbox download page](https://www.virtualbox.org/wiki/Downloads) and download the appropriate binary. Open the binary and follow the installations instructions.
 
         ### Step 2: Download and install Vagrant
 
-        Similarly to Step 1, go the [Vagrant download page](http://www.vagrantup.com/downloads.html) and download the appropriate binary. 
-        Open the binary and follow the installations instructions.
+        Similarly to Step 1, go the [Vagrant download page](http://www.vagrantup.com/downloads.html) and download the appropriate binary. Open the binary and follow the installations instructions.
 
         ### Step 3: Download and start the Data Science Toolbox
 
-        Open a terminal (also known as the command prompt in Microsoft Windows).
-        Create a directory, for example "MyDataScienceToolbox", and navigate to it:
+        Open a terminal (known as the command prompt in Microsoft Windows). Create a directory, for example "MyDataScienceToolbox", and navigate to it:
 
 
         ```console
@@ -94,7 +91,7 @@ title: site.name
         $ cd MyDataScienceToolbox
         ```
 
-        To download and start the Data Science Toolbox run the following commands:
+        In order to download and start the Data Science Toolbox, run the following commands:
 
         ```console
         $ vagrant init data-science-toolbox/dst
@@ -111,7 +108,7 @@ title: site.name
 
         ### Step 4: Log in (on Microsoft Windows)
 
-        If you are running Microsoft Windows, you need to use a third-party application in order to log in to the Data Science Toolbox. We recommend Putty. Go to its [download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) and download `putty.exe`. Run `putty.exe` and enter the following values:
+        If you are running Microsoft Windows, you need to use a third-party application in order to log in to the Data Science Toolbox. We recommend Putty for this. Go to its [download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) and download `putty.exe`. Run `putty.exe` and enter the following values:
 
         Host Name (or IP address): 127.0.0.1 <br \>
         Port: 2222<br \>
@@ -126,15 +123,15 @@ title: site.name
         ```console
         vagrant@data-science-toolbox:~$ dst setup base
         ```
-
-        Step 3 created a file named `Vagrantfile`, which is a configuration file used by Vagrant.
-        Open the file in your favorite text editor and add the following text somewhere around line 22:
+        
+        (Note that `vagrant@data-science-toolbox:~` indicates that this command should be run on the Data Science Toolbox.)
+        Step 3 created a file named `Vagrantfile`, which is a configuration file used by Vagrant.  Open the file in your favorite text editor and add the following text somewhere around line 22:
 
         ```ruby
         config.vm.network "forwarded_port", guest: 8888, host: 8888
         ```
 
-        This line instructs Vagrant to open up port 8888 so that you can access the IPython Notebook from your browser. You can now restart the Data Science Toolbox and log in again:
+        This line instructs Vagrant to open up port 8888 so that the IPython Notebook server is accessible from your browser. Restart the Data Science Toolbox and log in again so that the changes take effect:
 
         ```bash
         $ vagrant reload
@@ -147,7 +144,7 @@ title: site.name
         vagrant@data-science-toolbox:~$ sudo ipython notebook --profile=dst
         ```
 
-        You can now access the IPython Notebook server at `https://localhost:8888`. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Just click on the "Proceed anyway" button.
+        You can now access the IPython Notebook server at `https://localhost:8888`. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Because you know what's on the server-side, you can just click on the "Proceed anyway" button.
 
         <a href="assets/img/ipython-03.png"><img src="assets/img/ipython-03.png" style="width:555px" class="screenshot" /></a>
 
@@ -155,14 +152,13 @@ title: site.name
 
         <a href="assets/img/ipython-04.png"><img src="assets/img/ipython-04.png" style="width:555px" class="screenshot" /></a>
 
-        Once you're logged in, you are greeted with the wonderful IPython Notebook.
+        Once you're logged in, you're greeted with the wonderful IPython Notebook.
 
         <a href="assets/img/ipython-05.png"><img src="assets/img/ipython-05.png" style="width:555px" class="screenshot" /></a>
 
-
         ### Step 6: Install additional software packages and bundles (optional)
 
-        It's unlikely that the Data Science Toolbox contains *all* the software you need to do data science. Fortunately, you can always use `apt-get` and `pip` to install individual Ubuntu and Python packages, respectively. For example:
+        It's unlikely that the Data Science Toolbox contains *all* the software you need for your data science project. Fortunately, you can always use `apt-get` and `pip` to install individual Ubuntu and Python packages, respectively. For example:
 
         ```console
         vagrant@data-science-toolbox:~$ sudo apt-get install cowsay
@@ -289,13 +285,13 @@ title: site.name
         ubuntu@ip-172-31-26-198:~$ dst setup base
         ```
 
-        To start the IPython Notebook server, run:
+        (Note that `ubuntu@ip-172-31-26-198:~` indicates that this command should be run on the Data Science Toolbox. Your IP address may be different.) To start the IPython Notebook server, run:
 
         ```console
         ubuntu@ip-172-31-26-198:~$ sudo ipython notebook --profile=dst
         ```
 
-        You can now access the IPython Notebook server at `https://<public dns>:8888`. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Just click on the "Proceed anyway" button.
+        You can now access the IPython Notebook server at `https://<public dns>:8888`. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Because you know what's on the server-side, you can just click on the "Proceed anyway" button.
 
         <a href="assets/img/ipython-01.png"><img src="assets/img/ipython-01.png" style="width:555px" class="screenshot" /></a>
 
@@ -303,11 +299,11 @@ title: site.name
 
         <a href="assets/img/ipython-02.png"><img src="assets/img/ipython-02.png" style="width:555px" class="screenshot" /></a>
 
-        Once you're logged in, you are greeted with the wonderful IPython Notebook.
+        Once you're logged in, you're greeted with the wonderful IPython Notebook.
 
         ### Step 6: Install additional software packages and bundles (optional)
 
-        It's unlikely that the Data Science Toolbox contains *all* the software you need to do data science. Fortunately, you can always use `apt-get` and `pip` to install individual Ubuntu and Python packages, respectively. For example:
+        It's unlikely that the Data Science Toolbox contains *all* the software you need for your data science project. Fortunately, you can always use `apt-get` and `pip` to install individual Ubuntu and Python packages, respectively. For example:
 
         ```console
         ubuntu@ip-172-31-26-198:~$ sudo apt-get install cowsay

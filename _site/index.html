@@ -1,4 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>Data Science Toolbox</title><meta content="width=device-width" name="viewport" /><link href="/favicon.png" rel="icon" type="image/png" /><link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" /><link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" rel="stylesheet" /><link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed|Lora:400,400italic,700|Ubuntu+Mono:400,700" rel="stylesheet" /><link href="assets/css/main.css" rel="stylesheet" /></head><body><div class="container">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Data Science Toolbox</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu+Condensed|Lora:400,400italic,700|Ubuntu+Mono:400,700" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div class="container">
   <h1>
     Data Science Toolbox
   </h1>
@@ -38,10 +52,10 @@
   <h2>
     Additional software and data bundles
   </h2><p>The Data Science Toolbox has support for so-called bundles.
-A bundle is a collection of software or data that is specific to a certain book, course, or project. (In case you&#39;re interested, a bundle is essentially an Ansible playbook.) Once you&#39;re logged in to your Data Science Toolbox, bundles are installed with the <code>dst</code> command-line tool (we are currently developing a user-friendly web interface as well): </p>
+A bundle is a collection of software or data that is specific to a certain book, course, or project. (In case you&#39;re interested, a bundle is essentially an Ansible playbook.) Once you&#39;re logged in to your Data Science Toolbox, you can install bundles with the <code>dst</code> command-line tool (we are currently developing a user-friendly web interface as well): </p>
 <div class="highlight"><pre><span class="gp">vagrant@data-science-toolbox:~$</span> dst add dsatcl
 </pre></div>
-<p>The bundle <code>dsatcl</code> belongs to the upcoming book &quot;Data Science at the Command Line&quot;. It contains, among other thing, the command-line tools discussed in <a href="http://jeroenjanssens.com/2013/09/19/seven-command-line-tools-for-data-science.html">this blog post</a>. Because the Data Science Toolbox is still very young, this is the only bundle currently available. If you&#39;re a teacher, author, or organization, and you&#39;re interested in creating a software or data bundle for your class, book, or project, let us know, and we will help you out.</p>
+<p>The bundle <code>dsatcl</code> belongs to the upcoming book &quot;Data Science at the Command Line&quot; by Jeroen Janssens. It contains, among other things, the command-line tools discussed in <a href="http://jeroenjanssens.com/2013/09/19/seven-command-line-tools-for-data-science.html">this blog post</a>. Because the Data Science Toolbox is still very young, this is the only bundle currently available. If you&#39;re a teacher, author, or organization, and you&#39;re interested in creating a software or data bundle for your class, book, or project, let us know, and we will help you out.</p>
 
   <hr />
   <a name="start"></a>
@@ -64,22 +78,19 @@ A bundle is a collection of software or data that is specific to a certain book,
 
 <h3>Step 1: Download and install VirtualBox</h3>
 
-<p>Go to the <a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox download page</a> and download the appropriate binary.
-Open the binary and follow the installations instructions.</p>
+<p>Go to the <a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox download page</a> and download the appropriate binary. Open the binary and follow the installations instructions.</p>
 
 <h3>Step 2: Download and install Vagrant</h3>
 
-<p>Similarly to Step 1, go the <a href="http://www.vagrantup.com/downloads.html">Vagrant download page</a> and download the appropriate binary. 
-Open the binary and follow the installations instructions.</p>
+<p>Similarly to Step 1, go the <a href="http://www.vagrantup.com/downloads.html">Vagrant download page</a> and download the appropriate binary. Open the binary and follow the installations instructions.</p>
 
 <h3>Step 3: Download and start the Data Science Toolbox</h3>
 
-<p>Open a terminal (also known as the command prompt in Microsoft Windows).
-Create a directory, for example &quot;MyDataScienceToolbox&quot;, and navigate to it:</p>
+<p>Open a terminal (known as the command prompt in Microsoft Windows). Create a directory, for example &quot;MyDataScienceToolbox&quot;, and navigate to it:</p>
 <div class="highlight"><pre><span class="gp">$</span> mkdir MyDataScienceToolbox
 <span class="gp">$</span> <span class="nb">cd </span>MyDataScienceToolbox
 </pre></div>
-<p>To download and start the Data Science Toolbox run the following commands:</p>
+<p>In order to download and start the Data Science Toolbox, run the following commands:</p>
 <div class="highlight"><pre><span class="gp">$</span> vagrant init data-science-toolbox/dst
 <span class="gp">$</span> vagrant up
 </pre></div>
@@ -90,7 +101,7 @@ Create a directory, for example &quot;MyDataScienceToolbox&quot;, and navigate t
 </pre></div>
 <h3>Step 4: Log in (on Microsoft Windows)</h3>
 
-<p>If you are running Microsoft Windows, you need to use a third-party application in order to log in to the Data Science Toolbox. We recommend Putty. Go to its <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">download page</a> and download <code>putty.exe</code>. Run <code>putty.exe</code> and enter the following values:</p>
+<p>If you are running Microsoft Windows, you need to use a third-party application in order to log in to the Data Science Toolbox. We recommend Putty for this. Go to its <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">download page</a> and download <code>putty.exe</code>. Run <code>putty.exe</code> and enter the following values:</p>
 
 <p>Host Name (or IP address): 127.0.0.1 <br \>
 Port: 2222<br \>
@@ -103,18 +114,18 @@ Connection type: SSH</p>
 <p>If you like to be able to run IPython Notebook on your Data Science Toolbox, invoke the following command to create a password-protected profile:</p>
 <div class="highlight"><pre><span class="gp">vagrant@data-science-toolbox:~$</span> dst setup base
 </pre></div>
-<p>Step 3 created a file named <code>Vagrantfile</code>, which is a configuration file used by Vagrant.
-Open the file in your favorite text editor and add the following text somewhere around line 22:</p>
+<p>(Note that <code>vagrant@data-science-toolbox:~</code> indicates that this command should be run on the Data Science Toolbox.)
+Step 3 created a file named <code>Vagrantfile</code>, which is a configuration file used by Vagrant.  Open the file in your favorite text editor and add the following text somewhere around line 22:</p>
 <div class="highlight"><pre><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span> <span class="s2">&quot;forwarded_port&quot;</span><span class="p">,</span> <span class="ss">guest</span><span class="p">:</span> <span class="mi">8888</span><span class="p">,</span> <span class="ss">host</span><span class="p">:</span> <span class="mi">8888</span>
 </pre></div>
-<p>This line instructs Vagrant to open up port 8888 so that you can access the IPython Notebook from your browser. You can now restart the Data Science Toolbox and log in again:</p>
+<p>This line instructs Vagrant to open up port 8888 so that the IPython Notebook server is accessible from your browser. Restart the Data Science Toolbox and log in again so that the changes take effect:</p>
 <div class="highlight"><pre><span class="nv">$ </span>vagrant reload
 <span class="nv">$ </span>vagrant ssh
 </pre></div>
 <p>To start the IPython Notebook server, run:</p>
 <div class="highlight"><pre>vagrant@data-science-toolbox:~<span class="nv">$ </span>sudo ipython notebook --profile<span class="o">=</span>dst
 </pre></div>
-<p>You can now access the IPython Notebook server at <code>https://localhost:8888</code>. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Just click on the &quot;Proceed anyway&quot; button.</p>
+<p>You can now access the IPython Notebook server at <code>https://localhost:8888</code>. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Because you know what&#39;s on the server-side, you can just click on the &quot;Proceed anyway&quot; button.</p>
 
 <p><a href="assets/img/ipython-03.png"><img src="assets/img/ipython-03.png" style="width:555px" class="screenshot" /></a></p>
 
@@ -122,13 +133,13 @@ Open the file in your favorite text editor and add the following text somewhere 
 
 <p><a href="assets/img/ipython-04.png"><img src="assets/img/ipython-04.png" style="width:555px" class="screenshot" /></a></p>
 
-<p>Once you&#39;re logged in, you are greeted with the wonderful IPython Notebook.</p>
+<p>Once you&#39;re logged in, you&#39;re greeted with the wonderful IPython Notebook.</p>
 
 <p><a href="assets/img/ipython-05.png"><img src="assets/img/ipython-05.png" style="width:555px" class="screenshot" /></a></p>
 
 <h3>Step 6: Install additional software packages and bundles (optional)</h3>
 
-<p>It&#39;s unlikely that the Data Science Toolbox contains <em>all</em> the software you need to do data science. Fortunately, you can always use <code>apt-get</code> and <code>pip</code> to install individual Ubuntu and Python packages, respectively. For example:</p>
+<p>It&#39;s unlikely that the Data Science Toolbox contains <em>all</em> the software you need for your data science project. Fortunately, you can always use <code>apt-get</code> and <code>pip</code> to install individual Ubuntu and Python packages, respectively. For example:</p>
 <div class="highlight"><pre><span class="gp">vagrant@data-science-toolbox:~$</span> sudo apt-get install cowsay
 <span class="gp">vagrant@data-science-toolbox:~$</span> sudo pip install networkx
 </pre></div>
@@ -340,10 +351,10 @@ Open the file in your favorite text editor and add the following text somewhere 
 <p>If you like to be able to run IPython Notebook on your Data Science Toolbox, invoke the following command to create a password-protected profile:</p>
 <div class="highlight"><pre><span class="gp">ubuntu@ip-172-31-26-198:~$</span> dst setup base
 </pre></div>
-<p>To start the IPython Notebook server, run:</p>
+<p>(Note that <code>ubuntu@ip-172-31-26-198:~</code> indicates that this command should be run on the Data Science Toolbox. Your IP address may be different.) To start the IPython Notebook server, run:</p>
 <div class="highlight"><pre><span class="gp">ubuntu@ip-172-31-26-198:~$</span> sudo ipython notebook --profile<span class="o">=</span>dst
 </pre></div>
-<p>You can now access the IPython Notebook server at <code>https://&lt;public dns&gt;:8888</code>. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Just click on the &quot;Proceed anyway&quot; button.</p>
+<p>You can now access the IPython Notebook server at <code>https://&lt;public dns&gt;:8888</code>. Because the SSL certificate is self-signed, you may get a warning message from your browser. The image below shows how Chrome complains about this. Because you know what&#39;s on the server-side, you can just click on the &quot;Proceed anyway&quot; button.</p>
 
 <p><a href="assets/img/ipython-01.png"><img src="assets/img/ipython-01.png" style="width:555px" class="screenshot" /></a></p>
 
@@ -351,11 +362,11 @@ Open the file in your favorite text editor and add the following text somewhere 
 
 <p><a href="assets/img/ipython-02.png"><img src="assets/img/ipython-02.png" style="width:555px" class="screenshot" /></a></p>
 
-<p>Once you&#39;re logged in, you are greeted with the wonderful IPython Notebook.</p>
+<p>Once you&#39;re logged in, you&#39;re greeted with the wonderful IPython Notebook.</p>
 
 <h3>Step 6: Install additional software packages and bundles (optional)</h3>
 
-<p>It&#39;s unlikely that the Data Science Toolbox contains <em>all</em> the software you need to do data science. Fortunately, you can always use <code>apt-get</code> and <code>pip</code> to install individual Ubuntu and Python packages, respectively. For example:</p>
+<p>It&#39;s unlikely that the Data Science Toolbox contains <em>all</em> the software you need for your data science project. Fortunately, you can always use <code>apt-get</code> and <code>pip</code> to install individual Ubuntu and Python packages, respectively. For example:</p>
 <div class="highlight"><pre><span class="gp">ubuntu@ip-172-31-26-198:~$</span> sudo apt-get install cowsay
 <span class="gp">ubuntu@ip-172-31-26-198:~$</span> sudo pip install networkx
 </pre></div>
@@ -409,9 +420,16 @@ Open the file in your favorite text editor and add the following text somewhere 
       </div>
     </div>
   </footer>
-</div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-43246574-2', 'datasciencetoolbox.org');
-ga('send', 'pageview');</script></body></html>
+</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-43246574-2', 'datasciencetoolbox.org');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>
